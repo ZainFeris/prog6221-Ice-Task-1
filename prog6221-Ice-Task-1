@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Project3
+{
+    internal class Class1
+    {
+        public static void Main()
+        {
+            // prompting the user to enter the total number of scrips
+            Console.WriteLine("enter the total number of scrips to be marked");
+            string scripts = Console.ReadLine();
+            int s = Convert.ToInt32(scripts);
+
+            while (s < 1)
+            {
+                
+                Console.WriteLine("too little scripts");
+               
+                Console.WriteLine("enter the total number of scrips to be marked");
+                scripts = Console.ReadLine();
+                s = Convert.ToInt32(scripts);
+
+            }
+            // prompting the user to enter the total number of questions that are on the script
+            Console.WriteLine("enter the number of questions for this script");
+            string questions = Console.ReadLine();
+            int q = Convert.ToInt32(questions);
+
+            while (q < 1 || q > 10)
+            {
+                
+                Console.WriteLine("invalid question limit");
+                Console.WriteLine("enter the number of questions for this script");
+                questions = Console.ReadLine();
+                q = Convert.ToInt32(questions);
+
+            }
+            string[] markz = new string[q];
+            for (int i = 0; i < q; i++)
+            {
+                // prompting the user to enter the subtotal for each question
+                Console.WriteLine("enter the subtotal for question number " + (i + 1));
+                markz[i] = Console.ReadLine();
+                int sub = Convert.ToInt32(markz[i]);
+
+                while (sub < 1)
+                {
+                   
+                    Console.WriteLine("mark invalid");
+                    Console.WriteLine("enter the subtotal for question number " + (i + 1));
+
+                    markz[i] = Console.ReadLine();
+                    sub = Convert.ToInt32(markz[i]);
+
+                }
+            }
+            // prompting the user to enter the total number of lecturers that should be marking
+            Console.WriteLine("please enter the number of lectureres that will be marking: ");
+            string lec = Console.ReadLine();
+            int lecIN = Convert.ToInt32(lec);
+
+            while (lecIN < 1)
+            {
+                
+                Console.WriteLine("invalid number has been entered please re-enter: ");
+                lec = Console.ReadLine();
+                lecIN = Convert.ToInt32(lec);
+
+            }
+            int tst = 0;
+            for (int i = 0; i < q; i++)
+            {
+                int sub = Convert.ToInt32(markz[i]);
+                tst = sub + tst;
+            }
+
+            int div = (s / lecIN);
+
+            int secondz = tst * 2;
+            int spp = secondz * div;
+            int minutez = spp / 60;
+
+           
+            Console.WriteLine("The number of lectureres that will be marking this script is: " + lec);
+            Console.WriteLine("The number of scripts are: " + s);
+            Console.WriteLine("Each lecturer will mark " + div + " paper(s)");
+            Console.WriteLine("It will take each lecturer " + minutez + " minute(s) to finish");
+           
+
+
+
+
+        }
+    }
+}
